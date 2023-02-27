@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Vera" />
+    <title>@ViewData["Title"]</title>
+    <link rel="shortcut icon" href="~/images/ikona.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/lightbox2/css/lightbox.min.css" asp-append-version="true" />
+    
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <h1>Pojištění<span>Wrong</span></h1>
+            <small>aplikace</small>
+        </div>
+        <nav>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Úvod</a></li>
+                <li><a asp-controller="Article1" asp-action="Index">Pojištění</a></li>
+                <li><a asp-controller="Home" asp-action="Skills">Události</a></li>
+                <li><a asp-controller="Home" asp-action="References">Kontakt</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Přihlásit</a></li>
+                <li><a class="kontakt-tlacitko" asp-controller="Account" asp-action="Register">Registrovat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <div id="centrovac"
+             @if (Context.Request.RouteValues.Values.Any(p => p is "Home") && Context.Request.RouteValues.Values.Any(p => p is "Index"))
+             {
+                <text>class="domu-article"</text>
+            }>
+            <header>
+                <h1>@ViewData["Title"]</h1>
+            </header>
+
+            @RenderBody()
+
+            <div class="cistic"></div>
+        </div>
+    </article>
+
+   
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/lightbox2/js/lightbox.min.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+<footer>Vytvořila &copy;VeRa 2023 pro <a href="https://itnetwork.cz">itnetwork.cz</a>
+</footer>
+</body>
+</html>

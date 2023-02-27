@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AspBlog.Models.Article>
+
+@{
+    ViewData["Title"] = "Přidat pojistníka";
+}
+
+<section>
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Pohlaví</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>Muž</option>
+                <option>Žena</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Jméno</label>
+            <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Jan">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Příjmení</label>
+            <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Novák">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Adresa</label>
+            <input type="adresa" class="form-control" id="exampleFormControlInput1" placeholder="Ulice">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Obec</label>
+            <input type="obec" class="form-control" id="exampleFormControlInput1" placeholder="Město/vesnice">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">PSČ</label>
+            <input type="psc" class="form-control" id="exampleFormControlInput1" placeholder="000 00">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Telefonní číslo</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="+420 000 000">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="host@hotmail.com">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="clanky-tlacitko">Uložit</button>
+        </div>
+    </form>
+</section>
+<section>
+   @if (User.IsInRole("admin"))
+                {
+            <a class="clanky-tlacitko" asp-action="Create">Přidat</a>
+                }
+    <ul class="list-group" id="clanky">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                <h2><a asp-action="Details" asp-route-id="@item.Id">@item.Title</a></h2>
+                <p>@item.Description</p>
+                @if (User.IsInRole("admin"))
+                {
+                    <p>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editovat</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Odstranit</a>
+                    </p>
+                }
+            </li>
+        }
+    </ul>
+</section>

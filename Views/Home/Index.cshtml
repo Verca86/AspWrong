@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Evidence pojištění";
+}
+
+
+<section>
+        <img src="~/images/logo2.png" class="avatar"¨class="rounded-circle" class="float" alt="auto">
+    <p>
+        Vítejte v aplikaci Wrong.
+    </p>
+    <p>
+        Aplikace byla vytvořena za účelem zlepšení komunikace mezi pojišťovnou a klienty. Kontaktovat nás můžete na 
+        <a asp-controller="Home" asp-action="References">kontaktní stránce</a>.
+    </p>
+    <p>Aplikace umožňuje evidenci:</p>
+    <ul>
+        <li>Pojištěnců</li>
+        <li>Pojistných událostí</li>
+        <li>Uživatelů</li>
+        <li>Pojištění</li>
+    </ul>
+    <p>
+     
+        <strong>Přidat a vyhledat pojištěnce můžete na odkazech níže:</strong>
+    </p>
+
+    <p class="tlacitko-odstavec">
+        <a asp-controller="Article1" asp-action="Index" class="reference-tlacitko">Přidat pojištěnce</a> 
+        <a asp-controller="Article1" asp-action="Index" class="reference-tlacitko">Vyhledat pojištěnce</a>
+    </p>
+    <div class="cistic"></div>
+</section>
+
+
+

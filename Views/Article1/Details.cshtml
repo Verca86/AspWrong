@@ -1,0 +1,58 @@
+﻿@model AspBlog.Models.Article1
+
+@{
+    ViewData["Title"] = "Detail pojistníka";
+}
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Jméno) 
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jméno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Příjmení)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Příjmení)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Obec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Obec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PSČ)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PSČ)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<p></p>
+<div>
+    <a asp-action="Editovat" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Zpět na hlavní stránku</a>
+</div>
