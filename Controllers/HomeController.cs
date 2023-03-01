@@ -1,23 +1,23 @@
-﻿using AspBlog.Models;
+﻿using AspWrong.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace AspBlog.Controllers
+namespace AspWrong.Controllers
 {
     
     public class HomeController : Controller
     {
-        public IActionResult Contact()
+        public IActionResult Kontakt()
         {
             return View();
         }
 
-        public IActionResult References()
+        public IActionResult Prihlas()
         {
             return View();
         }
 
-        public IActionResult Skills()
+        public IActionResult Udalosti()
         {
             return View();
         }

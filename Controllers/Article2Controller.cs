@@ -8,89 +8,89 @@ using Microsoft.EntityFrameworkCore;
 using AspWrong.Data;
 using AspWrong.Models;
 
-namespace AspBlog.Controllers
+namespace AspWrong.Controllers
 {
-    public class Article1Controller : Controller
+    public class Article2Controller : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public Article1Controller(ApplicationDbContext context)
+        public Article2Controller(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Article1
+        // GET: Article2
         public async Task<IActionResult> Index()
         {
-              return _context.Article1 != null ? 
-                          View(await _context.Article1.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Article1'  is null.");
+              return _context.Article2 != null ? 
+                          View(await _context.Article2.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Article2'  is null.");
         }
 
-        // GET: Article1/Details/5
+        // GET: Article2/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Article1 == null)
+            if (id == null || _context.Article2 == null)
             {
                 return NotFound();
             }
 
-            var article1 = await _context.Article1
+            var article2 = await _context.Article2
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (article1 == null)
+            if (article2 == null)
             {
                 return NotFound();
             }
 
-            return View(article1);
+            return View(article2);
         }
 
-        // GET: Article1/Create
+        // GET: Article2/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Article1/Create
+        // POST: Article2/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Jméno,Příjmení,Adresa,Obec,PsČ,Telefon,Email")] Article1 article1)
+        public async Task<IActionResult> Create([Bind("Id,Jméno,Příjmení,Popis")] Article2 article2)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(article1);
+                _context.Add(article2);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(article1);
+            return View(article2);
         }
 
-        // GET: Article1/Edit/5
+        // GET: Article2/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Article1 == null)
+            if (id == null || _context.Article2 == null)
             {
                 return NotFound();
             }
 
-            var article1 = await _context.Article1.FindAsync(id);
-            if (article1 == null)
+            var article2 = await _context.Article2.FindAsync(id);
+            if (article2 == null)
             {
                 return NotFound();
             }
-            return View(article1);
+            return View(article2);
         }
 
-        // POST: Article1/Edit/5
+        // POST: Article2/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Jméno,Příjmení,Adresa,Obec,PSČ,Telefon,Email")] Article1 article1)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Jméno,Příjmení,popis")] Article2 article2)
         {
-            if (id != article1.Id)
+            if (id != article2.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace AspBlog.Controllers
             {
                 try
                 {
-                    _context.Update(article1);
+                    _context.Update(article2);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Article1Exists(article1.Id))
+                    if (!Article2Exists(article2.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace AspBlog.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(article1);
+            return View(article2);
         }
 
-        // GET: Article1/Delete/5
+        // GET: Article2/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Article1 == null)
+            if (id == null || _context.Article2 == null)
             {
                 return NotFound();
             }
 
-            var article1 = await _context.Article1
+            var article2 = await _context.Article2
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (article1 == null)
+            if (article2 == null)
             {
                 return NotFound();
             }
 
-            return View(article1);
+            return View(article2);
         }
 
-        // POST: Article1/Delete/5
+        // POST: Article2/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Article1 == null)
+            if (_context.Article2 == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Article1'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Article2'  is null.");
             }
-            var article1 = await _context.Article1.FindAsync(id);
-            if (article1 != null)
+            var article2 = await _context.Article2.FindAsync(id);
+            if (article2 != null)
             {
-                _context.Article1.Remove(article1);
+                _context.Article2.Remove(article2);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool Article1Exists(int id)
+        private bool Article2Exists(int id)
         {
-          return (_context.Article1?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Article2?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

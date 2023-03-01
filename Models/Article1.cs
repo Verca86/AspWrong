@@ -1,4 +1,4 @@
-﻿namespace AspBlog.Models
+﻿namespace AspWrong.Models
 {
     public class Article1
     {

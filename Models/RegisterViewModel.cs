@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using AspBlog.Models;
+using AspWrong.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-namespace AspBlog.Models
+namespace AspWrong.Models
 {
     public class RegisterViewModel
     {

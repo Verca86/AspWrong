@@ -1,7 +1,7 @@
-﻿using AspBlog.Models;
+﻿using AspWrong.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-namespace AspBlog.Controllers
+namespace AspWrong.Controllers
 {
     public class AccountController : Controller
     {

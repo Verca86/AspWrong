@@ -12,7 +12,7 @@
 
 body {
     font: 14px "Poppins";
-    background: #f9f9f9;
+    background: white;
     color: #414042;
     box-sizing: border-box;
     margin: 0;
@@ -204,7 +204,7 @@ body > header {
         text-decoration: none;
         color: #00386B;
     }
-.avatar {
+.deposit {
     float: right;
     width: 500px;
     padding-left: 10px;

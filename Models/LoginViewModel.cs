@@ -1,18 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using AspBlog.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Identity;
-using AspBlog.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Authorization;
 
-namespace AspBlog.Models
+namespace AspWrong.Models
 {
     public class LoginViewModel
     {

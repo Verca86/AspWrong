@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AspBlog.Data.Migrations
+namespace AspWrong.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Vytvoreni_Pojistnika : Migration

@@ -1,4 +1,4 @@
-using AspBlog.Data;
+using AspWrong.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

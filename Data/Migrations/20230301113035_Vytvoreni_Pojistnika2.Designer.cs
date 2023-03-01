@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspWrong.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230225201025_Vytvoreni_Pojistnika")]
-    partial class Vytvoreni_Pojistnika
+    [Migration("20230301113035_Vytvoreni_Pojistnika2")]
+    partial class Vytvoreni_Pojistnika2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace AspWrong.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AspBlog.Models.Article1", b =>
+            modelBuilder.Entity("AspWrong.Models.Article1", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,6 +63,46 @@ namespace AspWrong.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Article1");
+                });
+
+            modelBuilder.Entity("AspWrong.Models.Article2", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Adresa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Jméno")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Obec")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PSČ")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Příjmení")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Article2");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

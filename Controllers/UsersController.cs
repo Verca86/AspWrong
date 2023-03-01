@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AspBlog.Controllers
+namespace AspWrong.Controllers
 {
     public class UsersController : Controller
     {

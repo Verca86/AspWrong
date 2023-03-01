@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using AspBlog.Models;
+using AspWrong.Models;
 
-namespace AspBlog.Data
+namespace AspWrong.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -10,6 +10,7 @@ namespace AspBlog.Data
             : base(options)
         {
         }
-        public DbSet<AspBlog.Models.Article1> Article1 { get; set; } = default!;
+        public DbSet<AspWrong.Models.Article1> Article1 { get; set; } = default!;
+        public DbSet<AspWrong.Models.Article2> Article2 { get; set; } = default!;
     }
 }
