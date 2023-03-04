@@ -11,6 +11,10 @@ namespace AspWrong.Controllers
         {
             return View();
         }
+        public IActionResult Pojisteni()
+        {
+            return View();
+        }
 
         public IActionResult Prihlas()
         {
