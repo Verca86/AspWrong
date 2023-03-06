@@ -59,7 +59,7 @@ namespace AspBlog.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Article1");
+                    b.ToTable("Article1", (string)null);
                 });
 
             modelBuilder.Entity("AspWrong.Models.Article2", b =>
@@ -82,13 +82,24 @@ namespace AspBlog.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Popis")
+                    b.Property<string>("Obec")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PSČ")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Příjmení")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Article2");
+                    b.ToTable("Article2", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

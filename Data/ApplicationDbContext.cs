@@ -10,7 +10,7 @@ namespace AspWrong.Data
             : base(options)
         {
         }
-        public DbSet<AspWrong.Models.Article1> Article1 { get; set; } = default!;
-        public DbSet<AspWrong.Models.Article2> Article2 { get; set; } = default!;
+        public DbSet<Article1> Article1 { get; set; } = default!;
+        public DbSet<Article2> Article2 { get; set; } = default!;
     }
 }
