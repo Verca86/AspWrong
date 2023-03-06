@@ -1,14 +1,9 @@
 ﻿@model IEnumerable<AspWrong.Models.Article2>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pojistné události";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<a asp-action="Create">Přidat pojistnou událost</a>
 <table class="table">
     <thead>
         <tr>
@@ -37,9 +32,9 @@
                 @Html.DisplayFor(modelItem => item.Popis)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editovat</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detail</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Vymazat</a>
             </td>
         </tr>
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspWrong.Data;
 using AspWrong.Models;
@@ -25,6 +20,29 @@ namespace AspBlog.Controllers
               return _context.Article1 != null ? 
                           View(await _context.Article1.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Article1'  is null.");
+        }
+
+        // Get Search
+        public async Task<IActionResult> Vyhledat(string searchString)
+        {
+            if (_context.Article1 == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Article1'  is null.");
+            }
+
+            var article1 = from m in _context.Article1
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                article1 = article1.Where(x => x.Jméno!.Contains(searchString));
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                article1 = article1.Where(s => s.Příjmení!.Contains(searchString));
+            }
+
+            return View(await article1.ToListAsync());
         }
 
         // GET: Article1/Details/5
@@ -158,6 +176,11 @@ namespace AspBlog.Controllers
         private bool Article1Exists(int id)
         {
           return (_context.Article1?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        [HttpPost]
+        public string Vyhledat(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
     }
 }

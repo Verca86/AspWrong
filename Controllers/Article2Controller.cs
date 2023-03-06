@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspWrong.Data;
 using AspWrong.Models;
@@ -26,7 +21,28 @@ namespace AspWrong.Controllers
                           View(await _context.Article2.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Article2'  is null.");
         }
+        // Get Search
+        public async Task<IActionResult> Vyhledat(string searchString)
+        {
+            if (_context.Article2 == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Article2'  is null.");
+            }
 
+            var article2 = from m in _context.Article2
+                           select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                article2 = article2.Where(x => x.Jméno!.Contains(searchString));
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                article2 = article2.Where(s => s.Příjmení!.Contains(searchString));
+            }
+
+            return View(await article2.ToListAsync());
+        }
         // GET: Article2/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<AspWrong.Models.Article1>
+
+
+@{
+    ViewData["Title"] = "Vyhledání pojistníka";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Article1" asp-action="Index" method="get">
+            <p>
+                Jméno: <input type="text" name="SearchString" />
+                <p></p>
+                Příjmení: <input type="text" name="SearchString" />
+                <p></p>
+                <input type="submit" value="Hledat" />
+            </p>
+        </form>
+    </div>
+</div>
+<p></p>
+<div>
+    <a asp-action="Index">Zpět na hlavní stránku</a>
+</div>
