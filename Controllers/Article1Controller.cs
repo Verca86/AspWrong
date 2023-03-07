@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using AspWrong.Data;
 using AspWrong.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspBlog.Controllers
 {
+    [Authorize(Roles="admin")]
     public class Article1Controller : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -15,6 +17,7 @@ namespace AspBlog.Controllers
         }
 
         // GET: Article1
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
               return _context.Article1 != null ? 
@@ -23,29 +26,27 @@ namespace AspBlog.Controllers
         }
 
         // Get Search
-        public async Task<IActionResult> Vyhledat(string searchString)
+        public async Task<IActionResult> Vyhledat(string SearchString)
         {
-            if (_context.Article1 == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Article1'  is null.");
-            }
-
+            //if (_context.Article1 == null)
+            // {
+            //     return Problem("Entity set 'ApplicationDbContext.Article1'  is null.");
+            //}
+            ViewData["Vyhledat"] = SearchString;
             var article1 = from m in _context.Article1
                          select m;
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(SearchString))
             {
-                article1 = article1.Where(x => x.Jméno!.Contains(searchString));
-            }
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                article1 = article1.Where(s => s.Příjmení!.Contains(searchString));
+                article1 = article1.Where(s => s.Příjmení!.Contains(SearchString));
             }
 
             return View(await article1.ToListAsync());
         }
 
         // GET: Article1/Details/5
+
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Article1 == null)
@@ -64,6 +65,7 @@ namespace AspBlog.Controllers
         }
 
         // GET: Article1/Create
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
@@ -74,6 +76,7 @@ namespace AspBlog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([Bind("Id,Jméno,Příjmení,Adresa,Obec,PsČ,Telefon,Email")] Article1 article1)
         {
             if (ModelState.IsValid)

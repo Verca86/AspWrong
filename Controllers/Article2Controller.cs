@@ -22,23 +22,19 @@ namespace AspWrong.Controllers
                           Problem("Entity set 'ApplicationDbContext.Article2'  is null.");
         }
         // Get Search
-        public async Task<IActionResult> Vyhledat(string searchString)
+        public async Task<IActionResult> Vyhledat(string SearchString)
         {
-            if (_context.Article2 == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Article2'  is null.");
-            }
-
+            //if (_context.Article2 == null)
+            //{
+            //    return Problem("Entity set 'ApplicationDbContext.Article2'  is null.");
+            //}
+            ViewData["Vyhledat"] = SearchString;
             var article2 = from m in _context.Article2
                            select m;
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(SearchString))
             {
-                article2 = article2.Where(x => x.Jméno!.Contains(searchString));
-            }
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                article2 = article2.Where(s => s.Příjmení!.Contains(searchString));
+                article2 = article2.Where(s => s.Příjmení!.Contains(SearchString));
             }
 
             return View(await article2.ToListAsync());
@@ -104,7 +100,7 @@ namespace AspWrong.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Jméno,Příjmení,popis")] Article2 article2)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Jméno,Příjmení,Popis")] Article2 article2)
         {
             if (id != article2.Id)
             {

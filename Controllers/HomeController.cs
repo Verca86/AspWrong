@@ -25,6 +25,10 @@ namespace AspWrong.Controllers
         {
             return View();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)

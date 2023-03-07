@@ -37,7 +37,6 @@
     <Content Remove="wwwroot\images\miny_pascal.png" />
     <Content Remove="wwwroot\images\miny_pascal_nahled.png" />
     <Content Remove="wwwroot\images\pascal.png" />
-    <Content Remove="wwwroot\js\initTinyMCE.js" />
   </ItemGroup>
 
   <ItemGroup>

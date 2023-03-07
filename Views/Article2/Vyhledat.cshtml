@@ -6,18 +6,50 @@
 }
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Article2" asp-action="Index" method="get">
-            <p>
-                Jméno: <input type="text" name="SearchString" />
+        <form asp-action="Vyhledat" method="get">
+            <div class="form-group">
+                <label for="SearchString">Vyhledat podle příjmení</label>
+                <input type="text" name="SearchString"
+                       value="@ViewData["Vyhledat"]" />
+                <input type="submit" value="Hledat" class="btn btn-primary" />
+            </div>
             <p></p>
-                Příjmení: <input type="text" name="SearchString" />
-            <p></p>
-            <input type="submit" value="Hledat" />
-            </p>
         </form>
     </div>
 </div>
 <p></p>
 <div>
-    <a asp-action="Index">Zpět na hlavní stránku</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Jméno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Příjmení)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Popis)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Jméno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Příjmení)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Popis)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-controller="Home" asp-action="Udalosti">Zpět na hlavní stránku</a>
 </div>

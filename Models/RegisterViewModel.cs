@@ -1,7 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using AspWrong.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 namespace AspWrong.Models
 {
     public class RegisterViewModel

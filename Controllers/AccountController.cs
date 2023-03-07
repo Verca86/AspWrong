@@ -1,6 +1,8 @@
 ﻿using AspWrong.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+
+
 namespace AspWrong.Controllers
 {
     public class AccountController : Controller
@@ -28,7 +30,38 @@ namespace AspWrong.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-        
+        [HttpGet]
+        public IActionResult Login(string? returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model, string? navratovaURL = null)
+        {
+            ViewData["ReturnUrl"] = navratovaURL;
+            if (ModelState.IsValid)
+            {
+                var vysledekOvereni = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                if (vysledekOvereni.Succeeded)
+                {
+                    return RedirectToLocal(navratovaURL);
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Neplatné přihlašovací údaje.");
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
         [HttpGet]
         public IActionResult Register(string? returnUrl = null)
         {
@@ -56,13 +89,7 @@ namespace AspWrong.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
             return View(model);
-        }
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }

@@ -37,13 +37,15 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 using (var scope = app.Services.CreateScope())
 {
     RoleManager<IdentityRole> spravceRoli = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     UserManager<IdentityUser> spravceUzivatelu = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    spravceRoli.CreateAsync(new IdentityRole("admin")).Wait();
-    IdentityUser uzivatel = spravceUzivatelu.FindByEmailAsync("svachova.v@gmail.com").Result;
+   spravceRoli.CreateAsync(new IdentityRole("admin")).Wait();
+   IdentityUser uzivatel = spravceUzivatelu.FindByEmailAsync("admin@admin.cz").Result;
+    spravceUzivatelu.AddToRoleAsync(uzivatel, "admin").Wait();
 }
 
 app.Run();

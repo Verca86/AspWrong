@@ -3,12 +3,11 @@
 @{
     ViewData["Title"] = "Pojištění";
 }
-<p>
 
+    <p>
+        <a asp-action="Create">Přidat pojištěnce</a>
+    </p>
 
-</p>
-<p>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -61,11 +60,17 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editovat</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detail</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Vymazat</a>
+                @if (User.IsInRole("admin"))
+                    {
+                        <p>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Editovat</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Detail</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Vymazat</a>
+                        </p>
+                    }
             </td>
         </tr>
-}
+            }
     </tbody>
 </table>
+<a asp-controller="Home" asp-action="Pojisteni">Zpět na hlavní stránku</a>
