@@ -72,10 +72,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
+                <td>
+                    <p>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editovat</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Detail</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Vymazat</a>
+                    </p>
+                </td>
             </tr>
+            
         }
     </tbody>
 </table>
+
 <p></p>
 <div>
     <a asp-controller="Home" asp-action="Pojisteni">Zpět na hlavní stránku</a>
