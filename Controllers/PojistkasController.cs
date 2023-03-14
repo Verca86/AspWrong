@@ -10,7 +10,7 @@ using AspWrong.Models;
 
 namespace AspWrong.Controllers
 {
-    public class PojistkasController : Controller
+    public class PojistkasController :Controller 
     {
         private readonly ApplicationDbContext _context;
 

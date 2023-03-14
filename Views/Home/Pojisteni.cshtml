@@ -5,10 +5,13 @@
     ViewData["Title"] = "Pojištění";
 }
 <section>
-  
+  <div>
+        <strong>Vytvořit pojištění je možné níže:</strong>
+  </div>
+  <p>
     </p>
     <p class="tlacitko-odstavec"> 
-        <a asp-controller="Article1" asp-action="Create" class="reference-tlacitko">Přidat pojištěnce</a>
+        <a asp-controller="Article1" asp-action="Create" class="reference-tlacitko">Vytvořit pojištěnce</a>
        
         @if (User.IsInRole("admin"))
         {

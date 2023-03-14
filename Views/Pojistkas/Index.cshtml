@@ -1,14 +1,8 @@
 ﻿@model IEnumerable<AspWrong.Models.Pojistka>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Údaje o pojištění";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -66,11 +60,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Do)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                @if (User.IsInRole("admin"))
+                {
+                    <p>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editovat</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Detail</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Vymazat</a>
+                    </p>
+                }
         </tr>
 }
     </tbody>
