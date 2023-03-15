@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using AspWrong.Data;
 using AspWrong.Models;
+using PagedList;
 
 namespace AspWrong.Controllers
 {
@@ -74,7 +75,7 @@ namespace AspWrong.Controllers
             {
                 _context.Add(article2);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Ulozit));
             }
             return View(article2);
         }
@@ -170,6 +171,10 @@ namespace AspWrong.Controllers
         private bool Article2Exists(int id)
         {
           return (_context.Article2?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        public IActionResult Ulozit()
+        {
+            return View();
         }
     }
 }

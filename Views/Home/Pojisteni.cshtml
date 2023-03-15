@@ -11,11 +11,12 @@
   <p>
     </p>
     <p class="tlacitko-odstavec"> 
-        <a asp-controller="Article1" asp-action="Create" class="reference-tlacitko">Vytvořit pojištěnce</a>
+        <a asp-controller="Article1" asp-action="Create" class="reference-tlacitko">Vytvořit pojištěného + pojištění</a>
        
         @if (User.IsInRole("admin"))
         {
         <a asp-controller="Article1" asp-action="Vyhledat" class="reference-tlacitko">Vyhledat pojištěného</a>
+        <a asp-controller="Pojistkas" asp-action="Vyhledat" class="reference-tlacitko">Vyhledat pojištění</a>
             <a asp-controller="Article1" asp-action="Index" class="reference-tlacitko">Seznam pojištěnců</a>
         }
     </p>

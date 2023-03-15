@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspWrong.Data;
 using AspWrong.Models;
+using PagedList;
 
 namespace AspWrong.Controllers
 {
@@ -44,6 +45,23 @@ namespace AspWrong.Controllers
 
             return View(pojistka);
         }
+        public async Task<IActionResult> Vyhledat(string SearchString)
+        {
+            //if (_context.Pojistkas == null)
+            // {
+            //     return Problem("Entity set 'ApplicationDbContext.Article1'  is null.");
+            //}
+            ViewData["Vyhledat"] = SearchString;
+            var pojistka = from m in _context.Pojistka
+                           select m;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                pojistka = pojistka.Where(s => s.Predmet!.Contains(SearchString));
+            }
+
+            return View(await pojistka.ToListAsync());
+        }
 
         // GET: Pojistkas/Create
         public IActionResult Create()
@@ -62,7 +80,7 @@ namespace AspWrong.Controllers
             {
                 _context.Add(pojistka);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Ulozit));
             }
             return View(pojistka);
         }
@@ -158,6 +176,10 @@ namespace AspWrong.Controllers
         private bool PojistkaExists(int id)
         {
           return (_context.Pojistka?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        public IActionResult Ulozit()
+        {
+            return View();
         }
     }
 }

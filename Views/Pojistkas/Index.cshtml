@@ -3,12 +3,12 @@
 @{
     ViewData["Title"] = "Údaje o pojištění";
 }
+<p>
+    <a asp-action="Create">Přidat doplňení pojištění:</a>
+</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PojistenyId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Majetek)
             </th>
@@ -37,9 +37,6 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PojistenyId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Majetek)
             </td>
             <td>
@@ -60,6 +57,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Do)
             </td>
+            <td>
                 @if (User.IsInRole("admin"))
                 {
                     <p>
@@ -68,6 +66,7 @@
                         <a asp-action="Delete" asp-route-id="@item.Id">Vymazat</a>
                     </p>
                 }
+            </td>
         </tr>
 }
     </tbody>

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using AspWrong.Data;
 using AspWrong.Models;
 using Microsoft.AspNetCore.Authorization;
+using PagedList;
 
 namespace AspBlog.Controllers
 {
@@ -77,7 +78,7 @@ namespace AspBlog.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<IActionResult> Create([Bind("Id,Jméno,Příjmení,Adresa,Obec,PsČ,Telefon,Email")] Article1 article1)
+        public async Task<IActionResult> Create([Bind("Id,Jméno,Příjmení,Adresa,Obec,PSČ,Telefon,Email")] Article1 article1)
         {
             if (ModelState.IsValid)
             {
