@@ -84,7 +84,7 @@ namespace AspBlog.Controllers
             {
                 _context.Add(article1);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Ulozit));
             }
             return View(article1);
         }
@@ -185,6 +185,10 @@ namespace AspBlog.Controllers
         public string Vyhledat(string searchString, bool notUsed)
         {
             return "From [HttpPost]Index: filter on " + searchString;
+        }
+        public IActionResult Ulozit()
+        {
+            return View();
         }
     }
 }
